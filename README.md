@@ -6,6 +6,18 @@
   - React
   - React Router
   - Context Api
+
+<div align="center">
+
+![Board](https://raw.githubusercontent.com/tech-dipesh/StateFlow-Project-Managment/refs/heads/master/public/board.png)
+![Responsive](https://raw.githubusercontent.com/tech-dipesh/StateFlow-Project-Managment/refs/heads/master/public/responsive.png)
+![DataList](https://raw.githubusercontent.com/tech-dipesh/StateFlow-Project-Managment/refs/heads/master/public/list.png)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Keyboard Shortcut](https://raw.githubusercontent.com/tech-dipesh/StateFlow-Project-Managment/refs/heads/master/public/keyboard-shortcut.png)
+
+**🗓️ Completed:** January 21, 2026 &nbsp;|&nbsp; **👨‍💻 Type:** Beginner Frontend Project &nbsp;|&nbsp; **🚀 Deployed on:** Vercel
+
+</div>
   
 
 

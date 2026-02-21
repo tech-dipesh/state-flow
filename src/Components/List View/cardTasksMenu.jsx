@@ -9,7 +9,7 @@ export default function CardTaskMenu({bothEdit, bothEditFeature, task}) {
   const [isMenu, setIsMenu]=useState(false);
   const [isLabel, setIsLabel]=useState(false);
   const [isPinned, setIsPinned]=useState(task.isPinned);
-  const {archives, setArchives} =useContext(dataContext)
+  const {setArchives} =useContext(dataContext)
 
   const {tasks, setTasks}=useContext(dataContext);
   const deleteTask=()=>{
@@ -48,13 +48,13 @@ export default function CardTaskMenu({bothEdit, bothEditFeature, task}) {
   const optionStyle='w-full px-2 py-1 justify-center text-left flex items-center cursor-pointer hover:bg-gray-700 text-white';
   return (
   <>
-  <td className='p-2 w-full md:w-64'>
+  <td className='p-2 w-full md:w-64 md:text-3xl'>
     <Option setTasks={setTasks} id={task.id} tasks={tasks} urgency={task.priority}/></td>
-    <td className='grid justify-center my-2'>{task.date=='' ? 'null': `${task.date}`}</td>
-      <td className="w-auto md:w-20">
+    <td className='grid justify-center my-2  md:text-3xl'>{task.date=='' ? 'null': `${task.date}`}</td>
+      <td className="w-auto md:w-20  md:text-3xl">
         <button onClick={(e) => bothEditFeature(e, task)} className="p-2 m-2 bg-blue-400 rounded-xs cursor-pointer">{bothEdit === false ? 'Edit' : 'Save'}</button>
         </td>
-  <td className="relative p-4 text-xl font-semibold text-left cursor-pointer" onClick={clickMenu}>
+  <td className="relative p-4 text-xl font-semibold text-left cursor-pointer  md:text-3xl" onClick={clickMenu}>
   <FontAwesomeIcon icon={faEllipsis}/>
   {isMenu && (
     // <div className='absolute w-40 md:w-32 right-0 lg:right-40 top-full mt-1 bg-gray-800 rounded-lg border border-gray-700 z-50 shadow-lg'>
