@@ -15,7 +15,7 @@ const Keyboardshortcut=lazy(()=>import("./Pages/keyboard-shortcut.jsx"))
 const Chart=lazy(()=>import("./Pages/Chart.jsx"))
 
 let router = createBrowserRouter([
-{
+{ 
     path: "/",
     element: <App/>,
     errorElement: <Error/>,
