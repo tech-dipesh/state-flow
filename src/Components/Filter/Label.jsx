@@ -26,7 +26,6 @@ const Label = ({setIsLabel, id, setIsMenu, isMenu}) => {
     // <div className='w-32 md:w-48 lg:w-48 relative p-2 flex flex-col'>
     <div className='w-full p-3 flex flex-col gap-2'>
     <CreatableSelect
-    // Taken from docs to shhow above page.
     styles={{
     container: (base) => ({ ...base, width: '100%' }),
     menu: (base) => ({ ...base, zIndex: 100 }),

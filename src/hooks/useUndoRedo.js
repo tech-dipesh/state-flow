@@ -18,8 +18,8 @@ export default function useUndoRedo(initialValue) {
   
   const undoOperation=()=>{
     if(past.length===0) return;
-    const newPresent = past[past.length - 1];
-  const newPast = past.slice(0, -1);
+    const newPresent = past.at(-1);
+    const newPast = past.slice(0, -1);
   setFuture(prev => [present, ...prev]);
   setPresent(newPresent);
   setPast(newPast);

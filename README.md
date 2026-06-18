@@ -250,6 +250,7 @@ Used for popup/modal features in React.
 | 01/23 | Added archive list view with delete; moved archive data to `localStorage` |
 | 01/26 | Moved Pages to a separate folder; moved Common components out of Components; fixed all import/export errors |
 | 01/26 | Improved footer page styling |
+| 03/26 | Readme Content Structure And Board View Notes, Keyword Shortcut Escape Bar configuration |
 | Various | Fixed spelling and structural issues in `README.md` |
 
 ---

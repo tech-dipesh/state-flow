@@ -7,6 +7,9 @@ export default function Keyword({setIsPopup, isPopup}) {
   const navigate=useNavigate();
   useEffect(()=>{
     document.addEventListener("keydown", (e)=>{
+      if(e.key=='Escape'){
+        setIsPopup(false)
+      }
       if(e.key=="/" && e.ctrlKey===true){
         setIsPopup(!isPopup)
       }
