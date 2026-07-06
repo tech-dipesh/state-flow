@@ -1,6 +1,6 @@
 "use client"
-import React, { useContext, useEffect } from 'react'
-
+import React, {  useEffect } from 'react'
+import {dataContext}  from '@/context'
 export default function Keyword({setIsPopup, isPopup}) {
   const {undo, redo}=useContext();
   useEffect(()=>{

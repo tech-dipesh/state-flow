@@ -16,7 +16,7 @@ export default function Header({isPopup, setIsPopup}) {
   }
   const allRoutes=[
     {name: 'Home', route: '/' },
-    {name: 'List', route: '/list' },
+    {name: 'Task', route: '/task' },
     {name: 'Board', route: '/board' },
     {name: 'Chart', route: '/chart' },
   ]
@@ -25,7 +25,6 @@ export default function Header({isPopup, setIsPopup}) {
   return (
     <>
     <div className='mt-5 flex justify-between items-center px-4 md:px-12 lg:px-24 bg-wthie border-b border-slate-200 bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-900 dark:border-slate-800 py-4'>
-      {/* <Link to='./' className='lg:mx-24 h-8 w-12 md:scale-125 hover:h-10 hover:w-18'> */}
       <Link href='./' className='h-10 w-10 hover:opacity-80 transition-opacity'>
       <Image src="/logo.png" alt="Logo" height={40} width={40}/>
       </Link>
@@ -69,7 +68,7 @@ export default function Header({isPopup, setIsPopup}) {
               className={({isActive}) => 
                 `text-slate-300 hover:text-blue-400 cursor-pointer transition-colors duration-200 font-medium px-2 py-2 ${isActive ? 'text-blue-400 bg-slate-800/50 rounded-lg' : ''}`
             }
-            to={link.route}
+            href={link.route}
             >
               {link.name}
             </Link>

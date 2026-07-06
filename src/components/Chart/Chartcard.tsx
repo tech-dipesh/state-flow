@@ -1,32 +1,13 @@
+"use client"
 
-import { useContext } from 'react';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import {dataContext} from '@context'
+import data from '@/data/Chart'
 
-
-const data = {
-  labels: ['Todo', 'In Progress', 'Completed'],
-  datasets: [
-    {
-      data: [12, 19, 27],
-      backgroundColor: [
-        '#0F2854',
-        '#547792',
-        '#008BFF',
-      ],
-      borderColor: [
-        '#001F3D',
-        '#005461',
-        '#FBEFEF',
-      ],
-      borderWidth: 2,
-    },
-  ],
-};
-
-
+ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Chartcard() {
-  const {tasks}=useContext(dataContext)
+  const {tasks}=dataContext()
   let todo=0, progress=0, completed=0;
   tasks.map(t=>{
     const LowerValue=t.status.toLowerCase().replace(/\s+/g, "")

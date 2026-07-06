@@ -1,3 +1,4 @@
+"use client"
 import React, { useContext } from 'react'
 import {dataContext} from '@context'
 import { Line, Pie } from 'react-chartjs-2'
@@ -9,7 +10,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function Home() {
   const navigate=useNavigate();
-  const {tasks}=useContext(dataContext)
+  const {tasks}=dataContext()
   const allPinned=tasks.filter(({isPinned})=>isPinned==true);
   return (
     <>

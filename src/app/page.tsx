@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import {dataContext} from '@context'
+"use client"
+import {useTheme} from '@context'
 import { Line, Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import Chartcard from '@/Components/Chart/Chartcard'
@@ -7,7 +7,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export default function Home() {
-  const {tasks}=dataContext()
+  const {tasks}=useTheme()
   const allPinned=tasks.filter(({isPinned})=>isPinned==true);
   return (
     <>
@@ -37,13 +37,15 @@ export default function Home() {
         <div className='flex justify-center mt-4'>
           <p className='text-blue-500 text-sm md:text-base font-semibold bg-red-50 px-4 py-2 rounded-lg border border-red-200'>
             The Projects are empty.
-            <button className='opacitiy-85 cursor-pointer text-white bg-blue-500 font-semibold  py-2 px-4 rounded m-2 hover:text-gray-100'
-              onClick={()=><Link to="./list"/>}
-            >Create New</button>
+            <Link className='opacitiy-85 cursor-pointer text-white bg-blue-500 font-semibold  py-2 px-4 rounded m-2 hover:text-gray-100'
+              >
+
+            </Link>
+            >Create New</Link>
           </p>
         </div>
       )}
-      <Chart/>
+      <Chartcard/>
     </>
   )
 }

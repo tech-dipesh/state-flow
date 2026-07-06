@@ -1,13 +1,13 @@
-
-import React, { useContext, useState } from 'react'
+"use client"
+import React, {  useState } from 'react'
 import Option from '../Filter/Option';
 import {dataContext} from '@context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CardTaskMenu from './cardTasksMenu';
+import CardTaskMenu from './Cardtaskmenu';
 import { camelCase, startCase } from 'lodash';
 
 export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, setStatusEdit, statusedit }) {
-  const {tasks, setTasks}=useContext(dataContext);
+  const {tasks, setTasks}=dataContext();
   
   const [editedinput, setEditedInput] = useState('');
   const [bothEdit, setBothEdit] = useState(false);

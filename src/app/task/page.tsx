@@ -1,16 +1,17 @@
-import TaskInput from "@/Components/Input/TaskInput";
-import {useContext, useState} from "react"
-import TaskTable from "@/Components/List View/TaskTable"
-import Search from "@/Components/Filter/search";
-import Option from "@/Components/Filter/Option"
+"use client"
+import TaskInput from "@/components/Input/Taskinput";
+import { useState} from "react"
+import TaskTable from "@/components/List/TaskTable"
+import Search from "@/components/Filter/Search";
+import Option from "@/components/Filter/Option"
 import {dataContext} from '@context'
-import Undoredo from "@/Common/undoRedo";
-import Createbutton from "@/Common/Createbutton";
-import Exportcsv from "@/Common/Exportcsv";
-import Loading from "@/Common/Loader";
-import Archive from "@/Components/List View/Archive";
+import Undoredo from "@/components/Undoredo";
+import Createbutton from "@/components/common/Createbutton";
+import Exportcsv from "@/components/Exportcsv";
+import Loading from "@/components/Loader";
+import Archive from "@/components/List/Archive";
 export default function Task() {
-  const {tasks}=useContext(dataContext);
+  const {tasks}=dataContext();
   const [filterCritrea, setFilterCritrea]=useState();
   const [searchResults, setSearchResults] = useState(null);  
   const [isInput, setIsInput]=useState(false);

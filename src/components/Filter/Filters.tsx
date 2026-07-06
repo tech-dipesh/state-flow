@@ -1,4 +1,4 @@
-
+"use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react';
 export default function Filter({ options, isFilterPopup, SetIsFilterPopup, setOptionValue}) {

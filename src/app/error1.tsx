@@ -19,7 +19,6 @@ export default function Error({ error, reset }: ErrorProps) {
 
   return (
     <div className='min-h-screen flex flex-col'>
-      <Header />
       <div className='flex-1 flex flex-col items-center justify-center px-4'>
         <div className='flex-1 flex flex-col items-center justify-center px-4'>
           <div className='text-center max-w-md'>
@@ -38,7 +37,6 @@ export default function Error({ error, reset }: ErrorProps) {
             </Link>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   )

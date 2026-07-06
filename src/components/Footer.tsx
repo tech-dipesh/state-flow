@@ -2,7 +2,7 @@
 import { faCreativeCommons } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { Link } from 'react-router'
+import  Link  from 'next/link'
 
 export default function Footer() {
   const Style='text-slate-900 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400 transition-colors underline text-base md:text-lg'
@@ -11,10 +11,10 @@ export default function Footer() {
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4'>
       <p className='text-slate-900 dark:text-slate-400 text-sm md:text-base text-center md:text-left font-sans'><FontAwesomeIcon icon={faCreativeCommons}/>2026 Dipesh Sharma. All rights reserved.</p>
       <div className='flex items-center gap-6'>
-        <Link to='https://linkedin.com/in/tech-dipesh' 
+        <Link href='https://linkedin.com/in/tech-dipesh' 
         target='_blank' className={Style}>linkedin
         </Link>
-        <Link to='https://github.com/tech-dipesh' 
+        <Link href='https://github.com/tech-dipesh' 
         target='_blank' className={Style}>Github
         </Link>
       </div>

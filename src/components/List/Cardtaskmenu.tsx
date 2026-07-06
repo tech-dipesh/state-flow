@@ -1,7 +1,7 @@
-
+"use client"
 import { faEllipsis, faThumbTack } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useContext, useState } from 'react'
+import React, {  useState } from 'react'
 import Option from '../Filter/Option'
 import Label from "../Filter/Label"
 import {dataContext} from '@context'
@@ -10,9 +10,9 @@ export default function CardTaskMenu({bothEdit, bothEditFeature, task}) {
   const [isMenu, setIsMenu]=useState(false);
   const [isLabel, setIsLabel]=useState(false);
   const [isPinned, setIsPinned]=useState(task.isPinned);
-  const {setArchives} =useContext(dataContext)
+  const {setArchives} =dataContext()
 
-  const {tasks, setTasks}=useContext(dataContext);
+  const {tasks, setTasks}=dataContext();
   const deleteTask=()=>{
     const thisId=task.id;
     const updateTask=tasks.filter(t=>t.id!==thisId);

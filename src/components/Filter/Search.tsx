@@ -1,11 +1,11 @@
-
+"use client"
 import { useContext, useState } from "react"
 import {dataContext} from '@context'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Search({ setSearchResults }) {
-  const {tasks}=useContext(dataContext)
+  const {tasks}=dataContext()
   const [search, setSearch] = useState();
   const [onFocus, setOnFocus] = useState(false);
 

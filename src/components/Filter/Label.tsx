@@ -1,4 +1,4 @@
-
+"use client"
 import { useContext} from 'react';
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable';
@@ -11,7 +11,7 @@ import PopupProvider from '@context'
 // ];
 
 const Label = ({setIsLabel, id, setIsMenu, isMenu}) => {
-  const {tasks, setTasks}=useContext(dataContext)
+  const {tasks, setTasks}=dataContext()
   const mathThatId=tasks.find(task=>task.id===id) || [];
   
   let allPossibleOptions=mathThatId.Labels?.map(t=> ({value: t, label: t}));

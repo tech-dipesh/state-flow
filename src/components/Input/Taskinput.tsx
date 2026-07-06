@@ -1,11 +1,10 @@
-
-import React, { useContext, useState } from 'react'
+"use client"
+import React, {  useState } from 'react'
 import {dataContext} from '@context'
 import Date from './Date';
 
 export default function TaskInput({isInput, setIsInput}) {
-    const {setTasks}=useContext(dataContext);
-  
+    const {setTasks}=dataContext()  
   const [data, setData]=useState({
     title: '',
     status: '', 

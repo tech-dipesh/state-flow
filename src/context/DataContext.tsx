@@ -49,4 +49,4 @@ export const useTheme=()=>{
   return context;
 }
 
-export {useTheme as dataContext}
+export { useTheme as dataContext };
