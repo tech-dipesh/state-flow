@@ -23,7 +23,7 @@ export default function Search({ setSearchResults }) {
   return (
     <div className='flex md:justify-end px-8 py-4'>
       <div className='flex flex-col gap-2'>
-        <h2 className="text-lg font-semibold text-gray-700 md:flex md:justify-center">Search Task:</h2>
+        <h2 className="text-lg font-semibold text-green-200 md:flex md:justify-center">Search Task:</h2>
         <div className='flex flex-col md:flex-row gap-3 items-center'>
           <input
             type="text"

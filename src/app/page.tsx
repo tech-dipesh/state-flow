@@ -1,5 +1,6 @@
 "use client"
 import {useTheme} from '@context'
+import Link from 'next/link'
 import { Line, Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import Chartcard from '@/Components/Chart/Chartcard'
@@ -35,14 +36,15 @@ export default function Home() {
 
       {tasks.length ==0 && (
         <div className='flex justify-center mt-4'>
-          <p className='text-blue-500 text-sm md:text-base font-semibold bg-red-50 px-4 py-2 rounded-lg border border-red-200'>
-            The Projects are empty.
-            <Link className='opacitiy-85 cursor-pointer text-white bg-blue-500 font-semibold  py-2 px-4 rounded m-2 hover:text-gray-100'
-              >
-
+           <div className='flex flex-col sm:flex-row items-center gap-2 text-blue-500 text-sm md:text-base font-semibold bg-red-50 px-4 py-2 rounded-lg border border-red-200'>
+            <span>The Projects are empty.</span>
+            <Link 
+              href="/task" 
+              className="opacity-85 hover:opacity-100 cursor-pointer text-white bg-blue-500 hover:bg-blue-600 font-semibold py-2 px-4 rounded transition-all duration-200 inline-block"
+            >
+              Create New
             </Link>
-            >Create New</Link>
-          </p>
+          </div>
         </div>
       )}
       <Chartcard/>

@@ -2,11 +2,13 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import {dataContext} from '@context'
 import Keyboardshortcut from "@/components/Keyboardshortcut";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMoon, faSun, faTimes } from '@fortawesome/free-solid-svg-icons';
 
-export default function Header({isPopup, setIsPopup}) {
+export default function Header() {
+  const {setIsPopup, isPopup}=dataContext()
   const [isDark, setIsDark] = useState(true);
   const [isMobilePopup, setIsMobilePopup]=useState(false)
 

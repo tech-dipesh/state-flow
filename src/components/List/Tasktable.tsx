@@ -37,6 +37,9 @@ const eventDelegation=(e)=>{
       }
 }
 
+
+  const TH_STYLE="md:table-cell p-2 md:p-4 text-center text-xs md:text-sm lg:text-2xl  md:whitespace-nowrap font-semibold dark:text-blue-600"
+
   return (
     <div className="flex flex-col items-center p-1 md:p-2 lg:p-4 ">
       <h1 className="text-xl font-bold my-2 md:text-2xl lg:text-3xl">Task Table</h1>
@@ -60,14 +63,14 @@ const eventDelegation=(e)=>{
                     </div>
                   }
             </th>
-           <th className="p-2 md:p-4 font-semibold text-left text-xs md:whitespace-nowrap md:text-lg lg:text-2xl">Status
+           <th className={TH_STYLE}>Status
               <FontAwesomeIcon icon={faFilter} className='text-sm md:text-base cursor-pointer hover:text-blue-500 transition-colors ml-2 md:ml-5' onClick={()=>SetIsFilterPopup(!isFilterPopup)}/>
      <Filter options={["To do", "In progress", "Completed"]} isFilterPopup={isFilterPopup} SetIsFilterPopup={SetIsFilterPopup} optionValue={filterCritrea} setOptionValue={setFilterCritrea}/>
           </th>
-            <th className=" md:table-cell p-2 md:p-4 text-center text-xs  md:text-sm lg:text-2xl">Priority</th>
-            <th className=" md:table-cell p-2 md:p-4 text-center text-xs md:text-sm lg:text-2xl">Deadline</th>
-            <th className=" md:table-cell p-2 md:p-4 text-center text-xs md:text-sm lg:text-2xl">Change</th>
-            <th className=" md:table-cell p-2 md:p-4 text-center text-xs md:text-sm lg:text-2xl">Manage</th>
+            <th className={TH_STYLE}>Priority</th>
+            <th className={TH_STYLE}>Deadline</th>
+            <th className={TH_STYLE}>Change</th>
+            <th className={TH_STYLE}>Manage</th>
           </tr>
         </thead>
           <TableBody displayAllTasks={displayAllTasks} titleedit={titleedit} setTitleEdit={setTitleEdit} statusedit={statusedit} setStatusEdit={setStatusEdit}/>

@@ -18,7 +18,7 @@ export default function Keyboardshortcut({isPopup, setIsPopup}) {
     // { key: 'n', useCase: "Create Issue" },
   ]
 
-  return createPortal(
+  return (
     <div className='fixed inset-0 bg-gray-500 bg-opacity-50 flex items-center justify-center'>
       <div className='w-full max-w-2xl bg-white rounded-xl shadow-2xl p-6 m-12'>
         <div className='flex justify-between items-center mb-6'>
@@ -42,7 +42,6 @@ export default function Keyboardshortcut({isPopup, setIsPopup}) {
           ))}
         </div>
       </div>
-    </div>,
-    document.getElementById("portal")
+    </div>
   )
 }
