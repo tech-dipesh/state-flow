@@ -11,8 +11,8 @@ export default function Search({ setSearchResults }) {
 
   const searchValue = (e) => {
     setSearch(e.target.value)
-    let storeAllMatchMovie = tasks.filter(task => {
-      let getName = ((task.title).toLowerCase()).replaceAll(' ', '');
+    const storeAllMatchMovie = tasks.filter(task => {
+      const getName = ((task.title).toLowerCase()).replaceAll(' ', '');
       return getName.includes(search)
     })
     setSearchResults(storeAllMatchMovie);
