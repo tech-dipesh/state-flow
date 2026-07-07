@@ -3,7 +3,7 @@ import {useTheme} from '@context'
 import Link from 'next/link'
 import { Line, Pie } from 'react-chartjs-2'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import Chartcard from '@/Components/Chart/Chartcard'
+import Chartcard from '@/components/Chart/Chartcard'
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 

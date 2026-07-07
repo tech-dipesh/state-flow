@@ -1,7 +1,7 @@
 "use client"
 import { closestCorners, DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
 import {useTheme} from '@context'
-import Columns from '@/Components/Board/Columns'
+import Columns from '@/components/Board/Columns'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Createbutton from '@/components/common/Createbutton'
 import Exportcsv from '@/components/Exportcsv'
