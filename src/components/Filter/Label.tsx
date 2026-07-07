@@ -2,7 +2,7 @@
 import { useContext} from 'react';
 import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable';
-import PopupProvider from '@context'
+import {dataContext} from '@context'
 // const opt=[
 //   { value: 'Personal Life', label: 'Personal Life',  isFixed: true },
 //   { value: 'Business', label: 'Business',isFixed: true },

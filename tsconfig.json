@@ -24,6 +24,7 @@
       "@hooks": ["./src/hooks/*"],
       "@context": ["./src/context/DataContext"],   
       "@utils": ["./src/Utils/Keyboard"],   
+      "@data": ["./src/Data/*"],   
     }
   },
   "include": [

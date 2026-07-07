@@ -1,10 +1,11 @@
 "use client"
 import { closestCorners, DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from "@dnd-kit/core";
-import {useTheme} from '@context'
+import {dataContext} from '@context'
 import Columns from '@/components/Board/Columns'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Createbutton from '@/components/common/Createbutton'
 import Exportcsv from '@/components/Exportcsv'
+
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 export default function Board (){
   const mouseSensor = useSensor(MouseSensor);
@@ -15,8 +16,7 @@ export default function Board (){
     touchSensor,
     keyboardSensor,
   );
-  const {tasks, setTasks}=useTheme()
-
+  const {tasks, setTasks}=dataContext()
   const handleDragDnd=(e: KeyboardEvent)=>{
     if (!e.over) return;
     const taskId = e.active.id;
