@@ -14,7 +14,7 @@ export default function Header() {
 
   const changeDarkMode = () => {
   setIsDark(!isDark);
-  document.documentElement.classList.toggle('dark');
+    document.documentElement.classList.toggle('dark');
   }
   const allRoutes=[
     {name: 'Home', route: '/' },
