@@ -3,8 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react';
 import type {FilterProps} from '@/types/task'
 export default function Filter({ options, isFilterPopup, SetIsFilterPopup, setOptionValue }: FilterProps) {
-  const [selectOption, setSelectoption]=useState(null);
-console.log("options are", options);
+  const [selectOption, setSelectoption]=useState<number | null>(null);
   const clickFilter = () => {
     setSelectoption(null)
       SetIsFilterPopup(false)

@@ -27,6 +27,8 @@ export interface PopupType{
 
 type TaskOption= "To do"| "In progress"| "Completed" 
 
+export type TaskPriority = 'Low' | 'Medium' | 'High' | null;
+
 export interface FilterProps{
   options: TaskOption[];
   isFilterPopup: boolean
@@ -35,3 +37,7 @@ export interface FilterProps{
 }
 
 export type ContextTypes = Partial<PopupType>;
+  export interface TaskCardProps {
+  task: Task; 
+}
+

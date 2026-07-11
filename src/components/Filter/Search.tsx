@@ -1,19 +1,23 @@
 "use client"
+import type {Task} from '@/types/task'
+import {Dispatch, SetStateAction} from 'react'
 import { useContext, useState } from "react"
 import {dataContext} from '@context'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
-export default function Search({ setSearchResults }) {
+export default function Search({ setSearchResults }: { setSearchResults: Dispatch<SetStateAction<Task []  | null>> }) {
   const {tasks}=dataContext()
-  const [search, setSearch] = useState();
+  const [search, setSearch] = useState< string>();
   const [onFocus, setOnFocus] = useState(false);
 
-  const searchValue = (e) => {
-    setSearch(e.target.value)
+const searchValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const value=e.target.value
+    setSearch(value)
+    const clearnQ=value.toLowerCase().replaceAll('', '')
     const storeAllMatchMovie = tasks.filter(task => {
       const getName = ((task.title).toLowerCase()).replaceAll(' ', '');
-      return getName.includes(search)
+      return getName.includes(clearnQ)
     })
     setSearchResults(storeAllMatchMovie);
     console.log('focus', onFocus);

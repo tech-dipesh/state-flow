@@ -1,4 +1,5 @@
 "use client"
+import type {Task} from '@/types/task'
 import TaskInput from "@/components/Input/Taskinput";
 import { useState} from "react"
 import TaskTable from "@/components/List/TaskTable"
@@ -11,8 +12,8 @@ import Loading from "@/components/Loader";
 import Archive from "@/components/List/Archive";
 export default function Task() {
   const {tasks}=dataContext();
-  const [filterCritrea, setFilterCritrea]=useState();
-  const [searchResults, setSearchResults] = useState(null);  
+  const [filterCritrea, setFilterCritrea]=useState<string | null | number>();
+  const [searchResults, setSearchResults] = useState<Task [] | null>(null);  
   const [isInput, setIsInput]=useState(false);
   return !tasks?<Loading/>:(
     <div className="min-h-screen">

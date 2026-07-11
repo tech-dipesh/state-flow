@@ -1,5 +1,5 @@
 "use client"
-import React, {  Dispatch, SetStateAction, SubmitEvent, useState } from 'react'
+import React, {  ChangeEvent, Dispatch, SetStateAction, SubmitEvent, useState } from 'react'
 import {dataContext} from '@context'
 import Date from './Date';
 
@@ -11,13 +11,13 @@ type AllPriority='Low' | 'Medium' | 'High' | ""
 type AllStatus='In Progress' | 'Todo' | 'Completed' | ""
 
 export interface DateInputsInterface {
-  id: string;
+  id?: string;
   title: string;
   status: AllStatus;
   priority: AllPriority;
   date: string;
-  Labels: string[];
-  isPinned: boolean;
+  Labels?: string[];
+  isPinned?: boolean;
 }
 export default function TaskInput({isInput, setIsInput}: PropInterface) {
   const {setTasks}=dataContext()  
@@ -57,7 +57,7 @@ const submitForm=(e: SubmitEvent)=>{
               <input type="text" placeholder='Please Enter your task.' name='title' className='w-full md:w-64 lg:w-80 px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-sm md:text-base'
               onChange={(e) => setData((prev) => ({ ...prev, status: e.target.value as AllStatus }))}
               value={data.title}/>
-              <select name="status" className='w-full md:w-48 lg:w-56 px-3 py-2 border-2 border-gray-300 rounded-lg cursor-pointer text-sm md:text-base focus:outline-none focus:border-blue-500' onChange={(e)=>setData((prev)=>({...prev, status: e.target.value}))} value={data.status}>
+              <select name="status" className='w-full md:w-48 lg:w-56 px-3 py-2 border-2 border-gray-300 rounded-lg cursor-pointer text-sm md:text-base focus:outline-none focus:border-blue-500' onChange={(e: ChangeEvent<HTMLSelectElement>)=>setData((prev)=>({...prev, status: e.target.value}))} value={data.status}>
                 <option hidden value=''>Change Status</option>
                 <option value='todo'>To do</option>
                 <option value='inprogress'>In Progress</option>

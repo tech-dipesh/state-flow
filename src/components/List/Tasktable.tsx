@@ -1,13 +1,18 @@
 "use client"
-import type {MouseEvent, ReactHTMLElement} from 'react'
+import type {Dispatch, MouseEvent, ReactHTMLElement, SetStateAction} from 'react'
 import {   useState } from "react";
 import Filter from "../Filter/Filters";
 import { faFilter, faSquareCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TableBody from "./Tablebody";
 import {dataContext} from '@context'
-
-export default function TaskTable({filterCritrea,  setFilterCritrea, searchResults }) {
+//
+// interface filterProps{
+//   filterCritrea: string | null  ;
+//   setFilterCritrea: Dispatch<SetStateAction<string | null | number>>;
+//   searchResults: string | null
+// }
+export default function TaskTable({filterCritrea,  setFilterCritrea, searchResults }: filterProps) {
   const {tasks}=dataContext()
 
   const [titleedit, setTitleEdit] = useState(null);
@@ -18,7 +23,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
   const [isSortOption, setIsSortOption]=useState(false);
   const baseResult= searchResults?searchResults:
     filterCritrea
-      ? tasks.filter(task => task.status.toLowerCase() === filterCritrea.toLowerCase())
+      ? tasks.filter(task => task.status.toLowerCase() === filterCritrea?.toLowerCase())
       : tasks;
 
   const allSortMethod=["Relevence", "Ascending", "Descending", "Priority", "Status", "Deadline"]
@@ -28,8 +33,8 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
     setIsSortOption(!isSortOption);
     setDefaultSort(e.currentTarget.textContent || "")
   }
-  const eventDelegation=(e: MouseEvent<HTMLButtonElement>): void=>{
-    const target=e.target as ReactHTMLElement;
+  const eventDelegation=(e: MouseEvent<HTMLTableElement>): void=>{
+    const target=e.target as HTMLElement;
     if (target === e.currentTarget ||
       target.tagName === 'TBODY' ||
       target.tagName === 'TR' ||
@@ -46,7 +51,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
     <div className="flex flex-col items-center p-1 md:p-2 lg:p-4 ">
       <h1 className="text-xl font-bold my-2 md:text-2xl lg:text-3xl">Task Table</h1>
       <table className="min-w-full max-w-2xl border-2 overflow-x-auto border-gray-300 md:max-w-5xl md:whitespace-nowrap lg:w-full lg:max-w-7xl md:table-auto"
-        onClick={eventDelegation}
+        onClick={(e: MouseEvent<HTMLTableElement>)=>eventDelegation(e)}
       >
         <thead>
           <tr className="bg-gray-100 border-b-2 border-gray-300  lg:my-8">

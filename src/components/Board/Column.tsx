@@ -3,7 +3,6 @@ import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "./Taskcard";
 import type { Task } from '@/types/task'
 export type TaskStatus = 'TODO' | 'IN PROGRESS' | 'DONE';
-export type TaskPriority = 'Low' | 'Medium' | 'High';
 export interface ColumnType {
   id: string;
   title: string;
