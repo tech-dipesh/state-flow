@@ -1,25 +1,39 @@
 "use client"
-import type {Dispatch, SetStateAction, SubmitEvent} from 'react'
-import React, {  useState } from 'react'
+import type {ChangeEvent, Dispatch, SetStateAction, SubmitEvent} from 'react'
+import  {  useState } from 'react'
 import Option from '../Filter/Option';
 import type {Task} from '@/types/task'
 import {dataContext} from '@context'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CardTaskMenu from './Cardtaskmenu';
-import { camelCase, startCase } from 'lodash';
 interface TAbleInterface{
   displayAllTasks: Task[];
-  setTitleEdit: Dispatch<SetStateAction<string | number >> ;
+  setTitleEdit: Dispatch<SetStateAction<string | null >> ;
   titleedit: string;
-  setStatusEdit: Dispatch<SetStateAction<string | number >> ;
+  setStatusEdit: Dispatch<SetStateAction<string | null >> ;
   statusedit: string ;
 }
+
+
+interface InputInterface<E> {
+  (e: E, id: string): void;
+}
+
+
+interface TaskInterface{
+  e: SubmitEvent<HTMLFormElement>;
+  task: Task;
+}
 export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, setStatusEdit, statusedit }: TAbleInterface) {
+  const camelCase=(value: string): string=>{
+return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+}
+  const startCase = (value: string): string =>  value.replace(/[-_]+/g, ' ')
   const {tasks, setTasks}=dataContext();
-  
+
+
   const [editedinput, setEditedInput] = useState('');
   const [bothEdit, setBothEdit] = useState(false);
-  const changeCurrentvalue = (e : SubmitEvent<HTMLFormElement>, id) => {
+  const changeCurrentvalue: InputInterface<SubmitEvent<HTMLFormElement>>= (e, id)  => {
     e.preventDefault();
     e.stopPropagation();
     if (editedinput === '') {
@@ -29,11 +43,11 @@ export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, se
       task.id === id ? { ...task, title: editedinput } : task
     ));
 
-    setEditedInput(''); 
+    setEditedInput('');
     setTitleEdit(null);
   }
 
-  const optionEdit = (e, id) => {
+  const optionEdit: InputInterface<ChangeEvent<HTMLSelectElement>>  = (e, id ) => {
     setTasks(tasks.map(task =>
       task.id === id ? { ...task, status: e.target.value } : task
     ));
@@ -41,7 +55,7 @@ export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, se
     setStatusEdit(null);
   }
 
-  const bothEditFeature = (e, task) => {
+  const bothEditFeature = ({e, task}: TaskInterface) => {
     e.stopPropagation();
     if (titleedit === task.id && statusedit === task.id) {
       setStatusEdit(null);

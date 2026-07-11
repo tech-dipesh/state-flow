@@ -1,21 +1,42 @@
 "use client"
-import { useContext} from 'react';
-import Select from 'react-select'
+import { Dispatch, FC, SetStateAction, useContext} from 'react';
+import Select, { MultiValue } from 'react-select'
 import CreatableSelect from 'react-select/creatable';
 import {dataContext} from '@context'
+import {ContextTypes} from '@/types/task'
 // const opt=[
 //   { value: 'Personal Life', label: 'Personal Life',  isFixed: true },
 //   { value: 'Business', label: 'Business',isFixed: true },
 //   { value: 'Career', label: 'Career',},
 //   { value: 'Health', label: 'Health' },
 // ];
+interface SelectOption {
+  value: string;
+  label: string;
+}
+ interface Task {
+  id: string | number;
+  Labels?: string[];
+}
+ interface LabelProps {
+  setIsLabel: (value: boolean) => void;
+  id: string | number;
+  setIsMenu: (value: boolean) => void;
+  isMenu: boolean;
+}
+interface DataContextType {
+  tasks: Task[];
+  setTasks: Dispatch<SetStateAction<Task[]>>;
+}
 
-const Label = ({setIsLabel, id, setIsMenu, isMenu}) => {
-  const {tasks, setTasks}=dataContext()
-  const mathThatId=tasks.find(task=>task.id===id) || [];
+
+
+const Label: FC<LabelProps>= ({setIsLabel, id, setIsMenu, isMenu}) => {
+  const {tasks, setTasks}=dataContext() as ContextTypes;
+  const mathThatId=tasks?.find(task=>task.id===id) || [];
   
-  const allPossibleOptions=mathThatId.Labels?.map(t=> ({value: t, label: t}));
-  const changeLabels=(value)=>{
+  const allPossibleOptions: SelectOption[]=mathThatId.Labels?.map(t=> ({value: t, label: t}));
+  const changeLabels=(value: MultiValue<SelectOption>)=>{
     setIsLabel(true)
     const allListValues=value.map(f=>f.value) || []
     setTasks(prev=>

@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface Task {
   id: string;
   title: string;
@@ -23,3 +25,13 @@ export interface PopupType{
 
 }
 
+type TaskOption= "To do"| "In progress"| "Completed" 
+
+export interface FilterProps{
+  options: TaskOption[];
+  isFilterPopup: boolean
+  SetIsFilterPopup: Dispatch<SetStateAction<boolean>>;
+  setOptionValue: Dispatch<SetStateAction<TaskOption>>;
+}
+
+export type ContextTypes = Partial<PopupType>;

@@ -67,7 +67,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
             </th>
             <th className={TH_STYLE}>Status
               <FontAwesomeIcon icon={faFilter} className='text-sm md:text-base cursor-pointer hover:text-blue-500 transition-colors ml-2 md:ml-5' onClick={()=>SetIsFilterPopup(!isFilterPopup)}/>
-              <Filter options={["To do", "In progress", "Completed"]} isFilterPopup={isFilterPopup} SetIsFilterPopup={SetIsFilterPopup} optionValue={filterCritrea} setOptionValue={setFilterCritrea}/>
+              <Filter options={["To do", "In progress", "Completed"]} isFilterPopup={isFilterPopup} SetIsFilterPopup={SetIsFilterPopup}  setOptionValue={setFilterCritrea}/>
             </th>
             <th className={TH_STYLE}>Priority</th>
             <th className={TH_STYLE}>Deadline</th>
@@ -75,7 +75,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
             <th className={TH_STYLE}>Manage</th>
           </tr>
         </thead>
-        <TableBody displayAllTasks={displayAllTasks} titleedit={titleedit} setTitleEdit={setTitleEdit} statusedit={statusedit} setStatusEdit={setStatusEdit}/>
+        <TableBody displayAllTasks={displayAllTasks} titleedit={titleedit} setTitleEdit={setTitleEdit} statusedit={statusedit} setStatusEdit={setStatusEdit} />
       </table>
     </div>
   )
