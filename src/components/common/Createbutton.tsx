@@ -1,9 +1,13 @@
 "use client"
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useState } from 'react'
+import React, { Dispatch,  SetStateAction, useState } from 'react'
 import Link from 'next/link'
-export default function Createbutton({isInput:inputZero, setIsInput:InputFirst}) {
+ interface buttonProps {
+  isInput?: boolean;
+  setIsInput?: Dispatch<SetStateAction<boolean>>;
+}
+export default function Createbutton({isInput:inputZero, setIsInput:InputFirst}: buttonProps) {
   const  [local, setLocal]=useState(false)
   const isInput=inputZero ?? local;
   const setIsInput=InputFirst ?? setLocal;

@@ -1,9 +1,10 @@
 "use client"
 import { useDraggable } from "@dnd-kit/core"
+import type {Task} from '@types/task'
 import { CSS } from '@dnd-kit/utilities'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp, faGripLines } from '@fortawesome/free-solid-svg-icons';
-export default function TaskCard({task}) {
+export default function TaskCard({task}: Task) {
   const getDraggable=useDraggable({
     id: task.id
   })

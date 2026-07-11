@@ -1,29 +1,28 @@
 "use client"
 import  {useEffect} from 'react'
 import Link from 'next/link'
-interface ErroPageProps {
-  error: Error & { digest?: string };
-  reset: () => void;
+interface ErrorProps {
+  error: Error & { digest?: string }
+  reset: () => void
 }
 
-export default function Error({ error, reset }: ErroPageProps) {
+export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
     console.log("error", error);
+    return () => {
+      return
+    }
   }, [error])
 
-  console.log("error is" , error          );
   return (
     <div className='min-h-screen flex flex-col'>
       <div className='flex-1 flex flex-col items-center justify-center px-4'>
         <div className='flex-1 flex flex-col items-center justify-center px-4'>
           <div className='text-center max-w-md'>
-            <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>Error Occured</h2>
-            {error && (
-              <div className='bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-left flex'>
-                <p className='text-sm text-red-600 font-mono justify-center'>{error?.message || error?.digest}</p>
-              </div>
-            )}
-            <Link
+            <h1 className='text-6xl md:text-8xl font-bold text-blue-500 mb-4'>404</h1>
+            <h2 className='text-xl md:text-2xl font-semibold text-gray-700 mb-2'>Page Not Found</h2>
+            <p className='text-gray-600 mb-6'>The page you're looking for doesn't exist.</p>
+           <Link
               href='/'
               className='inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors'>
               Go to Homepage

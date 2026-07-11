@@ -1,17 +1,25 @@
 "use client"
+import type {Dispatch, SetStateAction, SubmitEvent} from 'react'
 import React, {  useState } from 'react'
 import Option from '../Filter/Option';
+import type {Task} from '@/types/task'
 import {dataContext} from '@context'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CardTaskMenu from './Cardtaskmenu';
 import { camelCase, startCase } from 'lodash';
-
-export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, setStatusEdit, statusedit }) {
+interface TAbleInterface{
+  displayAllTasks: Task[];
+  setTitleEdit: Dispatch<SetStateAction<string | number >> ;
+  titleedit: string;
+  setStatusEdit: Dispatch<SetStateAction<string | number >> ;
+  statusedit: string ;
+}
+export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, setStatusEdit, statusedit }: TAbleInterface) {
   const {tasks, setTasks}=dataContext();
   
   const [editedinput, setEditedInput] = useState('');
   const [bothEdit, setBothEdit] = useState(false);
-  const changeCurrentvalue = (e, id) => {
+  const changeCurrentvalue = (e : SubmitEvent<HTMLFormElement>, id) => {
     e.preventDefault();
     e.stopPropagation();
     if (editedinput === '') {

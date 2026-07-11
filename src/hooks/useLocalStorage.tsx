@@ -1,7 +1,7 @@
 "use client"
-import {  useState } from "react";
+import {  Dispatch, SetStateAction, useState } from "react";
 
-export default function useLocalStorage(key, initialValue) {
+export default function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<SetStateAction<T>>] {
   const [value, setValue] = useState(() =>{
     if(typeof window ===undefined){
       return initialValue;
@@ -15,7 +15,7 @@ export default function useLocalStorage(key, initialValue) {
     }
   }
   );
-  const updateTheState=(updatedValue)=>{
+  const updateTheState=<T, >(updatedValue: T)=>{
     if(typeof window===undefined) return;
     if(typeof updatedValue==='function'){
       const Fun=updatedValue(value);

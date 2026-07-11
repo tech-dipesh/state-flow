@@ -3,9 +3,8 @@ import { closestCorners, DndContext, KeyboardSensor, MouseSensor, TouchSensor, u
 import {dataContext} from '@context'
 import Columns from '@/components/Board/Columns'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Createbutton from '@/components/common/Createbutton'
 import Exportcsv from '@/components/Exportcsv'
-
+import { DragEndEvent } from "@dnd-kit/core";
 import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 export default function Board (){
   const mouseSensor = useSensor(MouseSensor);
@@ -17,10 +16,10 @@ export default function Board (){
     keyboardSensor,
   );
   const {tasks, setTasks}=dataContext()
-  const handleDragDnd=(e: KeyboardEvent)=>{
+  const handleDragDnd=(e: DragEndEvent)=>{
     if (!e.over) return;
     const taskId = e.active.id;
-    const newStatus = e.over.id;
+    const newStatus = e.over.id as string;
     const currentTaskValue = tasks.find(t => t.id === taskId);
     setTasks(tasks.map(task => 
       task.id === taskId ? {...task, status: newStatus} : task
@@ -30,7 +29,6 @@ export default function Board (){
     <DndContext onDragEnd={handleDragDnd} collisionDetection={closestCorners} sensors={sensors}>
       <Columns/>
       <div className="flex justify-between w-full my-24">
-        <Createbutton/>
         <div className="flex items-center gap-2 bg-slate-700 border border-yellow-300 text-white text-sm rounded-lg px-4 py-2 max-w-xs sm:max-w-sm md:max-w-md text-center mx-auto">
           <span className="text-base"><FontAwesomeIcon icon={faLightbulb} color="gray"/></span>
           <p className="leading-snug">

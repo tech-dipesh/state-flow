@@ -1,15 +1,30 @@
 "use client"
+import type {Dispatch, SetStateAction, ReactNode} from 'react'
 import { useState, createContext, useContext, useEffect } from "react";
-
 import useLocalStorage from "@/hooks/useLocalStorage"
 import useUndoRedo from "@/hooks/useUndoRedo"
-const PopupContext=createContext({})
+import type { Task } from "@/types/task";
+
+interface PopupType{
+  isPopup: boolean;
+  setIsPopup: Dispatch<SetStateAction<boolean>>;
+  tasks: Task[],
+  setTasks (newValue: Task[] | ((prev: Task[])=>Task [])): void,
+  undo: ()=>void;
+  redo: ()=>void;
+  canUndo: Task[][],
+  canRedo: Task[][],
+  archives: Task[];
+  setArchives: Dispatch<SetStateAction<Task[]>>;
+
+}
+const PopupContext = createContext<PopupType | undefined>({} as PopupType);
 
 
-export default function PopupProvider({children}) {
+export default function PopupProvider({children}: {children: ReactNode}) {
   const [isPopup, setIsPopup]=useState(false);
-  const [storeTask, setStoreTask] = useLocalStorage('tasks', []);
-  const [archives, setArchives]=useLocalStorage('archives', []);
+  const [storeTask, setStoreTask] = useLocalStorage<Task []>('tasks', []);
+  const [archives, setArchives]=useLocalStorage<Task []>('archives', []);
   const { 
     present,
     past,
@@ -20,13 +35,14 @@ export default function PopupProvider({children}) {
   } = useUndoRedo(storeTask);
 
 
-useEffect(() => {
-  setStoreTask(present);
-}, [present, setStoreTask]);
+  useEffect(() => {
+    setStoreTask(present);
+  }, [present, setStoreTask]);
 
   return (
     <PopupContext value={{
-      isPopup, setIsPopup,
+      isPopup,
+      setIsPopup,
       tasks: present,
       setTasks: updateResult,
       undo: undoOperation,

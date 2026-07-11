@@ -2,13 +2,13 @@
 import Image from "next/image"
 import { faFileCsv, faFileExport, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {  useState } from 'react'
+import {  useState } from 'react'
 import {dataContext} from '@context'
 export default function Exportcsv() {
   const {tasks}=dataContext()
   const [isExport, setIsExport]=useState(false);
 
-  const exportJson=(type)=>{
+  const exportJson=(type: string)=>{
     const a = document.createElement('a');
     a.href = `data:${type}/json;charset=utf-8,` + encodeURIComponent(JSON.stringify(tasks));
     a.download = 'data.json';
@@ -32,7 +32,7 @@ export default function Exportcsv() {
               <FontAwesomeIcon className='absolute top-2 right-2 cursor-pointer' icon={faXmark} onClick={()=>setIsExport(!isExport)}/>
               <div className='bg-blue-500 font-semibold py-2 px-4 rounded cursor-pointer text-white' onClick={()=>exportCsv('csv')}><FontAwesomeIcon icon={faFileCsv} color='white'/> CSV</div>
               <div className='bg-blue-500 font-semibold py-2 px-4 rounded flex items-center gap-1 cursor-pointer text-white' onClick={()=>exportJson('json')}>
-                <Image src={"/json.png"} className='h-4 w-4'/> JSON
+                <Image src={"/json.png"} className='h-4 w-4' alt="JSON"/> JSON
               </div>
             </div>
           </div>

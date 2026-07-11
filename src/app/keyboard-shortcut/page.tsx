@@ -1,9 +1,13 @@
 "use client"
 import { faMagnifyingGlass, faUpLong, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import { createPortal } from 'react-dom'
-export default function Keyboardshortcut({isPopup, setIsPopup}) {
+import { Dispatch, SetStateAction } from 'react';
+
+interface KeywordTypes{
+  isPopup: boolean;
+  setIsPopup: Dispatch<SetStateAction<boolean>>;
+}
+export default function Keyboardshortcut({isPopup, setIsPopup}: KeywordTypes) {
   const allCommand = [
     { key: '?', useCase: 'Open Keyword Shortcut' },
     // { key: 'k', useCase: 'Search List' },

@@ -25,6 +25,8 @@
       "@context": ["./src/context/DataContext"],   
       "@utils": ["./src/Utils/Keyboard"],   
       "@data": ["./src/Data/*"],   
+      "@types": ["./src/types/*"]
+      "@types/*": ["./src/types/*"] 
     }
   },
   "include": [

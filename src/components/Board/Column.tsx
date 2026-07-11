@@ -1,8 +1,18 @@
 "use client"
 import { useDroppable } from "@dnd-kit/core";
 import TaskCard from "./Taskcard";
-
-export default function Column({tasks, column}) {
+import type { Task } from '@/types/task'
+export type TaskStatus = 'TODO' | 'IN PROGRESS' | 'DONE';
+export type TaskPriority = 'Low' | 'Medium' | 'High';
+export interface ColumnType {
+  id: string;
+  title: string;
+}
+export interface EachColumnProps{
+  tasks: Task[];
+  column: ColumnType;
+}
+export default function Column({tasks, column}: EachColumnProps) {
   const allNode=useDroppable({
     id: column.id
   })

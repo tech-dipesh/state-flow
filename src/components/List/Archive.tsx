@@ -7,7 +7,7 @@ import {dataContext} from '@context'
 export default function Archive() {
   const [isArchive, setIsArchive]=useState(false);
   const {archives, setArchives} =dataContext()
-  const deleteTask=(id)=>{
+  const deleteTask=<T,>(id: T)=>{
     setArchives(prev=>
       prev.filter(p=>p.id!==id)
     )
@@ -24,7 +24,7 @@ export default function Archive() {
             {archives.length==0?
               <div className='bg-blue-500 font-semibold py-4 px-6 rounded cursor-pointer text-white text-center w-full'>The Archive is empty</div>:
               archives.map(({id, title, status})=>(
-                <div className='bg-blue-500 font-semibold py-6 px-4 rounded cursor-pointer text-white' onClick={()=>{}}>
+                <div className='bg-blue-500 font-semibold py-6 px-4 rounded cursor-pointer text-white' onClick={()=>{}} key={id}>
                   <div>Title: {title}</div>
                   <div>Status: {status}</div>
                   <div className='bg-blue-500 hover:bg-blue-600 font-semibold py-2 px-3 rounded cursor-pointer mt-2'>Delete: <FontAwesomeIcon icon={faTrashCan} onClick={()=>deleteTask(id)}/></div>

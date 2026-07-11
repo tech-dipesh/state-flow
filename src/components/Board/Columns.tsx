@@ -1,6 +1,6 @@
+import { Fragment } from "react";
 import Column from "./Column";
 import { DndContext } from "@dnd-kit/core";
-
 import {dataContext} from '@context'
 import Undoredo from '@/components/Undoredo'
 const COLUMNS=[
@@ -24,7 +24,9 @@ export default function Columns() {
           ))}
         </div>
       </div>
-      <Undoredo className='mt-6 md:mt-18'/>
+      <div className='mt-6 md:mt-18'>
+      <Undoredo />
+      </div>
     </>
   )
 }
