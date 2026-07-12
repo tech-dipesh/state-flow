@@ -12,7 +12,7 @@ import Loading from "@/components/Loader";
 import Archive from "@/components/List/Archive";
 export default function Task() {
   const {tasks}=dataContext();
-  const [filterCritrea, setFilterCritrea]=useState<string | null | number>();
+  const [filterCritrea, setFilterCritrea]=useState<string | null>(null);
   const [searchResults, setSearchResults] = useState<Task [] | null>(null);  
   const [isInput, setIsInput]=useState(false);
   return !tasks?<Loading/>:(

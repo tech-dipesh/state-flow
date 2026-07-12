@@ -1,5 +1,7 @@
 "use client"
 import React, {  ChangeEvent, Dispatch, SetStateAction, SubmitEvent, useState } from 'react'
+
+import type {Task} from '@/types/task'
 import {dataContext} from '@context'
 import Date from './Date';
 
@@ -7,8 +9,8 @@ interface PropInterface{
   isInput: boolean;
   setIsInput: Dispatch<SetStateAction<boolean>>
 }
-type AllPriority='Low' | 'Medium' | 'High' | ""
-type AllStatus='In Progress' | 'Todo' | 'Completed' | ""
+type AllPriority = "Low" | "Medium" | "High";
+type AllStatus = "In Progress" | "Todo" | "Completed";
 
 export interface DateInputsInterface {
   id?: string;
@@ -21,7 +23,7 @@ export interface DateInputsInterface {
 }
 export default function TaskInput({isInput, setIsInput}: PropInterface) {
   const {setTasks}=dataContext()  
-  const [data, setData]=useState<DateInputsInterface>({
+  const [data, setData]=useState<Task>({
     title: '',
     status: '', 
     priority: 'Medium',
@@ -42,9 +44,20 @@ const submitForm=(e: SubmitEvent)=>{
     return;
   }
   const newTaskWithId={...data, id: crypto.randomUUID()};
-  setTasks((prev)=>[...prev, newTaskWithId])
+    setTasks((prev)=>[...prev, newTaskWithId])
     setError(false)
-    setData({title: '', status: '', priority: 'Medium', date: ''})
+    setData({
+      title: "",
+      status: "",
+      priority: "Medium",
+      date: "",
+      Labels: [],
+      id: "",
+      isPinned: false,
+    });
+  }
+  const updateTask=(e: ChangeEvent<HTMLInputElement>)=>{
+      setData((prev) => ({ ...prev, title: e.target.value as AllStatus }))
   }
   return (
     <>
@@ -55,7 +68,7 @@ const submitForm=(e: SubmitEvent)=>{
             <form onSubmit={submitForm} 
               className='flex flex-col gap-2 md:flex-row md:gap-4 md:items-center justify-center'>
               <input type="text" placeholder='Please Enter your task.' name='title' className='w-full md:w-64 lg:w-80 px-3 py-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 text-sm md:text-base'
-              onChange={(e) => setData((prev) => ({ ...prev, status: e.target.value as AllStatus }))}
+              onChange={updateTask}
               value={data.title}/>
               <select name="status" className='w-full md:w-48 lg:w-56 px-3 py-2 border-2 border-gray-300 rounded-lg cursor-pointer text-sm md:text-base focus:outline-none focus:border-blue-500' onChange={(e: ChangeEvent<HTMLSelectElement>)=>setData((prev)=>({...prev, status: e.target.value}))} value={data.status}>
                 <option hidden value=''>Change Status</option>

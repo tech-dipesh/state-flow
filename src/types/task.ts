@@ -1,12 +1,16 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, MouseEvent, SetStateAction, SubmitEvent } from "react";
+
+export type TaskPriority = 'Low' | 'Medium' | 'High' | null;
+
+export type TaskOption= "To do"| "In progress"| "Completed" 
 
 export interface Task {
   id: string;
   title: string;
   status: string;
-  priority: string;
+  priority: TaskPriority;
   date: string;
-  labels?: string[];
+  Labels?: string[];
   isPinned?: boolean;
 }
 
@@ -25,15 +29,13 @@ export interface PopupType{
 
 }
 
-type TaskOption= "To do"| "In progress"| "Completed" 
 
-export type TaskPriority = 'Low' | 'Medium' | 'High' | null;
 
 export interface FilterProps{
   options: TaskOption[];
   isFilterPopup: boolean
   SetIsFilterPopup: Dispatch<SetStateAction<boolean>>;
-  setOptionValue: Dispatch<SetStateAction<TaskOption>>;
+  setOptionValue: Dispatch<SetStateAction<string | null>>;
 }
 
 export type ContextTypes = Partial<PopupType>;
@@ -41,3 +43,9 @@ export type ContextTypes = Partial<PopupType>;
   task: Task; 
 }
 
+
+
+export interface TaskInterface{
+  e: MouseEvent<HTMLButtonElement>;
+  task: Task;
+} 

@@ -1,5 +1,7 @@
 "use client"
 import React, { useState } from 'react'
+
+import {ContextTypes} from '@/types/task'
 import Link from 'next/link'
 import Image from 'next/image'
 import {dataContext} from '@context'
@@ -45,7 +47,7 @@ export default function Header() {
 
         <li className={styleLi} onClick={() => setIsPopup(!isPopup)}>
           Shortcut
-          {isPopup && <Keyboardshortcut setIsPopup={isPopup}/>}
+          {isPopup && <Keyboardshortcut  />}
         </li>
       </ul>
       <button 
@@ -67,8 +69,7 @@ export default function Header() {
             <Link 
               key={link.name}
               onClick={() => setIsMobilePopup(false)}
-              className={({isActive}) => 
-                `text-slate-300 hover:text-blue-400 cursor-pointer transition-colors duration-200 font-medium px-2 py-2 ${isActive ? 'text-blue-400 bg-slate-800/50 rounded-lg' : ''}`
+              className={ `text-slate-300 hover:text-blue-400 cursor-pointer transition-colors duration-200 font-medium px-2 py-2   'text-blue-400 bg-slate-800/50 rounded-lg'}`
             }
             href={link.route}
             >

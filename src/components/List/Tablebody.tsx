@@ -1,16 +1,15 @@
 "use client"
-import type {ChangeEvent, Dispatch, SetStateAction, SubmitEvent} from 'react'
+import type {ChangeEvent, Dispatch, MouseEvent, SetStateAction, SubmitEvent} from 'react'
 import  {  useState } from 'react'
-import Option from '../Filter/Option';
-import type {Task} from '@/types/task'
+import type {Task, TaskInterface} from '@/types/task'
 import {dataContext} from '@context'
 import CardTaskMenu from './Cardtaskmenu';
 interface TAbleInterface{
   displayAllTasks: Task[];
   setTitleEdit: Dispatch<SetStateAction<string | null >> ;
-  titleedit: string;
+  titleedit: string | null;
   setStatusEdit: Dispatch<SetStateAction<string | null >> ;
-  statusedit: string ;
+  statusedit: string | null;
 }
 
 
@@ -19,20 +18,19 @@ interface InputInterface<E> {
 }
 
 
-interface TaskInterface{
-  e: SubmitEvent<HTMLFormElement>;
+interface TaskType{
   task: Task;
 }
 export default function TableBody({ displayAllTasks, setTitleEdit, titleedit, setStatusEdit, statusedit }: TAbleInterface) {
   const camelCase=(value: string): string=>{
-return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
-}
+    return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+  }
   const startCase = (value: string): string =>  value.replace(/[-_]+/g, ' ')
   const {tasks, setTasks}=dataContext();
 
 
-  const [editedinput, setEditedInput] = useState('');
-  const [bothEdit, setBothEdit] = useState(false);
+  const [editedinput, setEditedInput] = useState<string>('');
+  const [bothEdit, setBothEdit] = useState<boolean>(false);
   const changeCurrentvalue: InputInterface<SubmitEvent<HTMLFormElement>>= (e, id)  => {
     e.preventDefault();
     e.stopPropagation();
@@ -55,7 +53,7 @@ return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperC
     setStatusEdit(null);
   }
 
-  const bothEditFeature = ({e, task}: TaskInterface) => {
+  const bothEditFeature = (e: MouseEvent<HTMLButtonElement>, task: Task)  => {
     e.stopPropagation();
     if (titleedit === task.id && statusedit === task.id) {
       setStatusEdit(null);
@@ -71,11 +69,11 @@ return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperC
   return (
     <tbody>
       {displayAllTasks.length == 0 ? (
-      <tr>
-        <td colSpan={8} className='p-2 md:p-4 text-lg  md:text-2xl lg:text-3xl text-red-500 font-semibold text-center'>The List is empty.</td>
-     </tr>
+        <tr>
+          <td colSpan={8} className='p-2 md:p-4 text-lg  md:text-2xl lg:text-3xl text-red-500 font-semibold text-center'>The List is empty.</td>
+        </tr>
       ) :
-        (displayAllTasks.map((task) => (
+        (displayAllTasks.map((task: Task) => (
           <tr key={task.id} className="border-b border-gray-200 hover:bg-gray-50">
             <td className="p-2 md:p-4 text-xs md:text-lg cursor-pointer max-w-37.5 truncate relative" onClick={() => setTitleEdit(task.id)}>
               {titleedit === task.id ? (
@@ -106,12 +104,12 @@ return value.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperC
                   </button>
                 </form>
               ) : (
-                <span className="hover:text-blue-600 transition-colors grid justify-center">{task.title}</span>
-              )}
+                  <span className="hover:text-blue-600 transition-colors grid justify-center">{task.title}</span>
+                )}
             </td>
             <td
               className={`p-2 md:p-3 text-xs md:text-lg rounded-xs cursor-pointer whitespace-nowrap relative
-              ${task.status === 'To do' ? 'bg-gray-500' : task.status === 'In Progress' ? 'bg-gray-400' : 'bg-blue-500'}`}
+${task.status === 'To do' ? 'bg-gray-500' : task.status === 'In Progress' ? 'bg-gray-400' : 'bg-blue-500'}`}
               onClick={() => setStatusEdit(task.id)} >
               <span className="justify-center grid">{startCase(camelCase(task.status))}
                 {statusedit === task.id &&

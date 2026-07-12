@@ -22,7 +22,7 @@ const PopupContext = createContext<PopupType | undefined>({} as PopupType);
 
 
 export default function PopupProvider({children}: {children: ReactNode}) {
-  const [isPopup, setIsPopup]=useState(false);
+  const [isPopup, setIsPopup]=useState<boolean>(false);
   const [storeTask, setStoreTask] = useLocalStorage<Task []>('tasks', []);
   const [archives, setArchives]=useLocalStorage<Task []>('archives', []);
   const { 

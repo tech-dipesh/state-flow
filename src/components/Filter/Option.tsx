@@ -13,19 +13,16 @@ interface OptionType {
   id: string;
   urgency: TaskPriority;
 }
-// interface urgencyInterface{
-//   urgency
-// }
 export default function Option({ id, urgency }: OptionType) {
   const { tasks, setTasks } = dataContext();
   const [option, setoption] = useState(false);
-  const [selectOption, setSelectOption] = useState<TaskPriority>(urgency);
+  const [selectOption, setSelectOption] = useState<TaskPriority>(urgency as TaskPriority);
 
   const allOptions = [
     { priority: "Low", icon: faCaretDown, color: "bg-blue-400" },
     { priority: "Medium", icon: faGripLines, color: "bg-blue-500" },
     { priority: "High", icon: faCaretUp, color: "bg-blue-600" },
-  ];
+  ]       as const
 
   const selectThatOption = allOptions.filter(
     (f) => f.priority === selectOption,

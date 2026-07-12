@@ -16,7 +16,7 @@ export default function Exportcsv() {
     setIsExport(!isExport);
   }
   const exportCsv=(type: string)=>{
-    const allCsvHeader= [['title','status','priority','date','Labels','id'],...tasks.map(task=>[task.title, task.status, task.priority, task.date, task.labels, task.id])].map(m=>m.join(",")).join('\r\n')
+    const allCsvHeader= [['title','status','priority','date','Labels','id'],...tasks.map(task=>[task.title, task.status, task.priority, task.date, task.Labels, task.id])].map(m=>m.join(",")).join('\r\n')
     const csvValue = "data:text/csv;charset=utf-8," +allCsvHeader;
     const encodedUri = encodeURI(csvValue);
     window.open(encodedUri);

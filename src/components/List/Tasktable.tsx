@@ -1,23 +1,24 @@
 "use client"
 import type {Dispatch, MouseEvent, ReactHTMLElement, SetStateAction} from 'react'
 import {   useState } from "react";
+import type {Task} from '@/types/task'
 import Filter from "../Filter/Filters";
 import { faFilter, faSquareCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TableBody from "./Tablebody";
 import {dataContext} from '@context'
-//
-// interface filterProps{
-//   filterCritrea: string | null  ;
-//   setFilterCritrea: Dispatch<SetStateAction<string | null | number>>;
-//   searchResults: string | null
-// }
+
+ interface filterProps{
+   filterCritrea: string | null  ;
+   setFilterCritrea: Dispatch<SetStateAction<string | null  >>;
+   searchResults: Task[] | null
+ }
 export default function TaskTable({filterCritrea,  setFilterCritrea, searchResults }: filterProps) {
   const {tasks}=dataContext()
 
-  const [titleedit, setTitleEdit] = useState(null);
+  const [titleedit, setTitleEdit] = useState<string | null>(null);
   const [isFilterPopup, SetIsFilterPopup]=useState(false);
-  const [statusedit, setStatusEdit] = useState(null);
+  const [statusedit, setStatusEdit] = useState<string | null>(null);
 
   const [defaultSort, setDefaultSort]=useState("Relevence")
   const [isSortOption, setIsSortOption]=useState(false);
@@ -27,9 +28,14 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
       : tasks;
 
   const allSortMethod=["Relevence", "Ascending", "Descending", "Priority", "Status", "Deadline"]
-  const displayAllTasks=defaultSort=="Relevence"?baseResult:defaultSort=="Ascending"?[...baseResult].sort((a, b)=>a.title.localeCompare(b.title)):defaultSort=="Descending"?[...baseResult].sort((a, b)=>b.title.localeCompare(a.title)):defaultSort=="Priority"? [...baseResult].sort((a, b)=>a.priority.localeCompare(b.priority)):defaultSort=="Status"?[...baseResult].sort((a, b)=>a.status.localeCompare(b.status)):[...baseResult].sort((a, b)=>a.date.localeCompare(b.date));
+ const displayAllTasks = defaultSort === "Relevence" ? baseResult :
+    defaultSort === "Ascending" ? [...baseResult].sort((a, b) => (a.title || "").localeCompare(b.title || "")) :
+    defaultSort === "Descending" ? [...baseResult].sort((a, b) => (b.title || "").localeCompare(a.title || "")) :
+    defaultSort === "Priority" ? [...baseResult].sort((a, b) => (a.priority || "").localeCompare(b.priority || "")) :
+    defaultSort === "Status" ? [...baseResult].sort((a, b) => (a.status || "").localeCompare(b.status || "")) :
+    [...baseResult].sort((a, b) => (a.date || "").localeCompare(b.date || ""));
 
-  const sortTheData=(e: MouseEvent<HTMLButtonElement>)=>{
+  const sortTheData=(e: MouseEvent<HTMLElement>)=>{
     setIsSortOption(!isSortOption);
     setDefaultSort(e.currentTarget.textContent || "")
   }
