@@ -14,39 +14,26 @@
     "@dnd-kit/utilities": "^3.2.2",
     "@fortawesome/fontawesome-svg-core": "^7.3.0",
     "@fortawesome/free-brands-svg-icons": "^7.3.0",
-    "@fortawesome/free-regular-svg-icons": "^7.3.0",
     "@fortawesome/free-solid-svg-icons": "^7.3.0",
     "@fortawesome/react-fontawesome": "^3.4.0",
     "@vercel/analytics": "^1.6.1",
     "chart.js": "^4.5.1",
-    "chroma-js": "^3.2.0",
-    "lodash": "^4.18.1",
     "next": "16.2.10",
     "react": "^19.2.7",
     "react-chartjs-2": "^5.3.1",
     "react-datepicker": "^9.1.0",
     "react-dom": "^19.2.7",
-    "react-router": "^7.18.1",
     "react-select": "^5.10.2",
-    "react-spinners": "^0.17.0",
-    "vercel": "^50.44.0"
+    "react-spinners": "^0.17.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.39.5",
-    "@tailwindcss/postcss": "^4.3.2",
-    "@types/node": "^20.19.43",
     "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
     "eslint": "^9.39.5",
     "eslint-config-next": "16.2.10",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.4.26",
-    "globals": "^16.5.0",
-    "tailwindcss": "^4.3.2",
     "typescript": "^7.0.2"
   },
-    "overrides": {
-      "stream-to-promise": "^3.0.0",
-      "tar": "^7.4.3"
+  "overrides": {
+    "stream-to-promise": "^3.0.0",
+    "tar": "^7.4.3"
   }
 }

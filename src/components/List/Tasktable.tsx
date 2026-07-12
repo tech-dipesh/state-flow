@@ -15,7 +15,6 @@ import {dataContext} from '@context'
  }
 export default function TaskTable({filterCritrea,  setFilterCritrea, searchResults }: filterProps) {
   const {tasks}=dataContext()
-
   const [titleedit, setTitleEdit] = useState<string | null>(null);
   const [isFilterPopup, SetIsFilterPopup]=useState(false);
   const [statusedit, setStatusEdit] = useState<string | null>(null);

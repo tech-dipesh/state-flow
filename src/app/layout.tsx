@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PopupProvider from '@context'
-
+import { Analytics } from '@vercel/analytics/next';
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { Geist, Geist_Mono } from "next/font/google";
@@ -30,6 +30,7 @@ export default function RootLayout({ children, }: Readonly<{ children: React.Rea
       <body className="min-h-full flex flex-col">
         <PopupProvider>
           <Header/>
+          <Analytics/>
           {children}
           <Footer/>
         </PopupProvider>
