@@ -2,8 +2,8 @@
 import type {Task} from '@/types/task'
 import TaskInput from "@/components/Input/Taskinput";
 import { useState} from "react"
-import TaskTable from "@/components/List/TaskTable"
 import Search from "@/components/Filter/Search";
+ import TaskTable from "@/components/List/TaskTable"
 import {dataContext} from '@context'
 import Undoredo from "@/components/Undoredo";
 import Createbutton from "@/components/common/Createbutton";

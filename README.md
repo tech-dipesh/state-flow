@@ -109,21 +109,21 @@ StateFlow is a beginner-level frontend project that mimics core Jira functionali
 ---
 
 ## Libraries Used
-
 | Library | Purpose |
-|---------|---------|
+| :--- | :--- |
 | `tailwindcss` | Styling |
 | `fontawesome` | Icons |
-| `react-router` | Routing |
 | `@dnd-kit/core` | Drag and drop |
-| `react-date-picker` | Deadline date picker |
+| `@dnd-kit/utilities` | Drag and drop helper utilities |
+| `react-datepicker` | Deadline date picker |
 | `react-select` | Label/tag multi-select |
 | `chart.js` | Chart rendering |
 | `react-chartjs-2` | React wrapper for chart.js |
-| `lodash` | Utilities (camelCase, startCase) |
-| `react-loader-spinner` | Loading spinner |
+| `react-spinners` | Loading spinner |
 | `vercel analytics` | Visitor stats |
-
+| `next` | React framework for production |
+| `react` | Core user interface library |
+| `react-dom` | DOM rendering for React |
 ---
 
 ## Drag and Drop
