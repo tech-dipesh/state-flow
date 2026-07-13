@@ -34,7 +34,7 @@
     "eslint-config-next": "16.2.10",
     "postcss": "^8.5.17",
     "tailwindcss": "^4.3.2",
-    "typescript": "^7.0.2"
+    "typescript": "^5.4.5"
   },
   "overrides": {
     "stream-to-promise": "^3.0.0",
