@@ -9,7 +9,7 @@ import Createbutton from "@/components/common/Createbutton";
 import Exportcsv from "@/components/Exportcsv";
 import Loading from "@/components/Loader";
 import Archive from "@/components/List/Archive";
-import TaskTable from '../../components/List/tasktable';
+import Tasktable from '../../components/List/tasktable';
 export default function Task() {
   const {tasks}=dataContext();
   const [filterCritrea, setFilterCritrea]=useState<string | null>(null);
@@ -19,7 +19,7 @@ export default function Task() {
     <div className="min-h-screen">
       <TaskInput isInput={isInput} setIsInput={setIsInput}/>
       <Search   setSearchResults={setSearchResults}/>
-      <TaskTable filterCritrea={filterCritrea} setFilterCritrea={setFilterCritrea} searchResults={searchResults}/>
+      <Tasktable filterCritrea={filterCritrea} setFilterCritrea={setFilterCritrea} searchResults={searchResults}/>
       <div className="flex justify-between w-full my-12 md:my-10 lg:my-24">
         <Createbutton isInput={isInput} setIsInput={setIsInput}/>
         <Exportcsv/>
