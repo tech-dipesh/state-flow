@@ -9,7 +9,7 @@ import Createbutton from "@/components/common/Createbutton";
 import Exportcsv from "@/components/Exportcsv";
 import Loading from "@/components/Loader";
 import Archive from "@/components/List/Archive";
-import Tasktable from '../../components/List/tasktable';
+import Tasktable from '../../components/List/Tasktable';
 export default function Task() {
   const {tasks}=dataContext();
   const [filterCritrea, setFilterCritrea]=useState<string | null>(null);
