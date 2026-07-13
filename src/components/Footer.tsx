@@ -8,7 +8,7 @@ export default function Footer() {
   const [date, setDate]=useState<string | undefined>()
   useEffect(() => {
     if(window!==undefined){
-      setDate(new Date().Now.plainDateISO().toString())
+      setDate(new Date().getFullYear().toString())
     }
 
   }, [])
