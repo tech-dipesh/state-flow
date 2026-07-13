@@ -3,13 +3,13 @@ import type {Task} from '@/types/task'
 import TaskInput from "@/components/Input/Taskinput";
 import { useState} from "react"
 import Search from "@/components/Filter/Search";
- import TaskTable from "@/components/List/TaskTable"
 import {dataContext} from '@context'
 import Undoredo from "@/components/Undoredo";
 import Createbutton from "@/components/common/Createbutton";
 import Exportcsv from "@/components/Exportcsv";
 import Loading from "@/components/Loader";
 import Archive from "@/components/List/Archive";
+import TaskTable from '@/components/List/TaskTable';
 export default function Task() {
   const {tasks}=dataContext();
   const [filterCritrea, setFilterCritrea]=useState<string | null>(null);

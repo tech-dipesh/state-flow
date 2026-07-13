@@ -4,10 +4,29 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import {useEffect} from 'react'
 import { Pie } from 'react-chartjs-2';
 import {dataContext} from '@context'
-import data from '@/data/Chart'
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default function Chartcard() {
+  const data = {
+    labels: ['Todo', 'In Progress', 'Completed'],
+    datasets: [
+      {
+        data: [12, 19, 27],
+        backgroundColor: [
+          '#0F2854',
+          '#547792',
+          '#008BFF',
+        ],
+        borderColor: [
+          '#001F3D',
+          '#005461',
+          '#FBEFEF',
+        ],
+        borderWidth: 2,
+      },
+    ],
+  };
+  
+
   const {tasks}=dataContext()
   
   let todo=0, progress=0, completed=0;
