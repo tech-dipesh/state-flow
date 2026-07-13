@@ -6,14 +6,7 @@ interface ErrorProps {
   reset: () => void
 }
 
-export default function Error({ error, reset }: ErrorProps) {
-  useEffect(() => {
-    console.log("error", error);
-    return () => {
-      return
-    }
-  }, [error])
-
+export default function Error() {
   return (
     <div className='min-h-screen flex flex-col'>
       <div className='flex-1 flex flex-col items-center justify-center px-4'>

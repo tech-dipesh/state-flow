@@ -1,4 +1,4 @@
-import { Dispatch, MouseEvent, SetStateAction, SubmitEvent } from "react";
+import type { Dispatch, MouseEvent, SetStateAction, SubmitEvent } from "react";
 
 export type TaskPriority = 'Low' | 'Medium' | 'High' | null;
 

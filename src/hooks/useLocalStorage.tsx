@@ -3,7 +3,7 @@ import {  Dispatch, SetStateAction, useState } from "react";
 
 export default function useLocalStorage<T>(key: string, initialValue: T): [T, Dispatch<SetStateAction<T>>] {
   const [value, setValue] = useState(() =>{
-    if(typeof window ===undefined){
+    if(typeof window ==='undefined'){
       return initialValue;
     }
     try {
@@ -16,7 +16,7 @@ export default function useLocalStorage<T>(key: string, initialValue: T): [T, Di
   }
   );
   const updateTheState=<T, >(updatedValue: T)=>{
-    if(typeof window===undefined) return;
+    if(typeof window==='undefined') return;
     if(typeof updatedValue==='function'){
       const Fun=updatedValue(value);
       localStorage.setItem(key, JSON.stringify(Fun));

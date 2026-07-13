@@ -59,7 +59,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
         onClick={(e: MouseEvent<HTMLTableElement>)=>eventDelegation(e)}
       >
         <thead>
-          <tr className="bg-gray-100 border-b-2 border-gray-300  lg:my-8">
+          <tr className="bg-gray-100 border-b-2 border-gray-299  lg:my-8">
             <th className="p-2 md:p-4 m-0 md:m-1 font-semibold text-left text-sm md:text-lg lg:text-xl relative max-w-30 md:max-w-none">
               Title
               <span className="ml-2 py-1 px-2 text-xs rounded-xs bg-gray-400 opacity-65 cursor-pointer relative md:text-base" onClick={()=>setIsSortOption(!isSortOption)}>
@@ -67,7 +67,7 @@ export default function TaskTable({filterCritrea,  setFilterCritrea, searchResul
                 <span className="hidden md:inline">Sort By: {defaultSort}</span>
                 <FontAwesomeIcon icon={faSquareCaretDown}/>
               </span>
-              {isSortOption && 
+              {isSortOption &&
                 <div className="absolute top-full left-0 mt-1 bg-gray-800 rounded-md shadow-lg z-50 min-w-max">
                   {allSortMethod.map(each=>(
                     <div key={each} className="bg-gray-800 px-4 py-2 hover:bg-gray-700 transition-colors cursor-pointer text-white first:rounded-t-md last:rounded-b-md" onClick={(e)=>sortTheData(e)}>{each}</div>
